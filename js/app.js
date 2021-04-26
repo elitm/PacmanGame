@@ -310,7 +310,12 @@ function UpdatePosition() {
 	board[pacman_pos.i][pacman_pos.j] = empty;
 	let currentTime = new Date();
 	time_elapsed = Math.round(totalTime-(currentTime - start_time)/ 1000);
-
+	if (time_elapsed <= 0)
+	{
+		StopGame();
+		death_audio.play();
+		window.alert("Times up Loser!")
+	}
 	let x = GetKeyPressed();
 	if (x !== undefined)
 		pac_side = x;
@@ -375,10 +380,10 @@ function CheckIfHit() {
 		else
 			score -= 10;
 		lives --;
-		if (lives === 0 || time_elapsed <= 0){
+		if (lives === 0 ){
 			StopGame();
 			death_audio.play();
-			window.alert("Loser!");
+			window.alert("No lives left Loser!");
 		}
 		else {
 			ClearMonsters();
@@ -414,7 +419,7 @@ function PointsLeft(lst) {
  * @return {number} which monster was hit, if no monsters were hit returns -1
  */
 function HitMonster(){
-	for (let i = 0; i < monster_pos.length; i++) {
+	for (let i = 0; i < monsters_num; i++) {
 		if ((pacman_pos.i === monster_pos[i].i && pacman_pos.j === monster_pos[i].j) || (pacman_pos.i === before_monster[i].i || pacman_pos.j === before_monster[i].j))
 			return i;
 	}
