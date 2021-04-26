@@ -8,8 +8,8 @@
 		<link rel="stylesheet" href="css/menu.css">
 		<link rel="stylesheet" href="css/login.css">
 	</head>
-	<title> PACMAN </title>
-	<link rel = "icon" href = "images/icon.png" type = "image/x-icon">
+	<title> cookie monster pacman </title>
+	<link rel = "icon" href = "images/cookiemonster.png" type = "image/x-icon">
 	<body>
 <style>
 	body {
@@ -20,8 +20,8 @@
 </style>
 	<!------------------- menu ------------------->
 	<nav class="menuBar">
-		<div style="float:left;">
-			<img src="images/cookielogo.png" height="80" width="120">
+		<div style="float: left">
+			<img src="images/cookielogo.png" height="60" width="80">
 		</div>
 		<a id="homeMenu" onclick="displayPage('#home')">Home</a>
 		<a id="loginMenu" onclick="displayPage('#login')">Login</a>
@@ -40,7 +40,7 @@
 
 	<!------------------- home ------------------->
 	<div class="tabcontent" id="home">
-<!--		<img src="logoo.png" align="center">-->
+		<img src="images/cookiem.gif" align="center" width="640" height="360">
 	</div>
 
 
@@ -120,7 +120,7 @@
 
 <!------------------- settings ------------------->
 
-<div clsss="tabcontent" id="settings">
+<div class="tabcontent" id="settings">
 	<h2>Settings</h2>
 	<form id="settingsForm">
 
@@ -138,8 +138,29 @@
 
 		</table>
 
-		<label id = "ballsAmount" ><b>Enter number of balls </b></label>
-		<input type="text" id="ballsAmountChosen">
+		<label id = "ballsAmount" ><b>Enter number of balls (50-90) </b></label>
+		<input type="text" id="ballsAmountChosen" min="50" max="90" size="4" value="50">
+		<br/>
+		<br/>
+		<label id = "monstersAmount" ><b>Enter number of Monsters (1-4) </b></label>
+		<input type="text" id="monstersAmountChosen" min="1" max="4" size="4" value="4">
+		<br/>
+		<br/>
+		<label id = "timePick" ><b>Enter time for game (in seconds) </b></label>
+		<input type="text" id="timePicked" min="60" size="4" value="50">
+		<br/>
+		<br/>
+		<label id = "colorPicks" ><b>Choose colors for balls </b></label>
+		<input type="color" id="colorPick5" value="#FFFF00"> 5 points
+		<br/>
+		<input type="color" id="colorPick15" value="#FFA07A"> 15 points
+		<br/>
+		<input type="color" id="colorPick25" value="#da70d6"> 25 points
+		<br/>
+		<br/>
+
+		<input id="submitSettings" type="submit" value="Start Game!"/>
+
 	</form>
 
 

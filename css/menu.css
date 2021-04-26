@@ -39,11 +39,11 @@
      padding: 6px 0;
  }
 
- /*#settingsForm{*/
- /*    float:right;*/
- /*}*/
+ #settingsForm{
+     float:right;
+ }
 
- /*td{*/
- /*    block-size: max-content;*/
- /*}*/
+ td{
+     block-size: max-content;
+ }
 

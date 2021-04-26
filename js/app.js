@@ -12,7 +12,7 @@ let monster2 = 11;
 let monster3 = 12;
 let monster4 = 13; // strongest monster!
 
-let monsters_num = 4;
+let monsters_num;
 let monster_pos = [{},{},{},{}];
 let before_monster = [];
 
@@ -41,19 +41,19 @@ $(document).ready(function() {
 	lblLives = document.getElementById('lblLives');
 	lblScore = document.getElementById('lblScore');
 	context = canvas.getContext("2d");
-	Start();
+	// Start();
 });
 
 function Start() {
 
 	board = [];
-	// score = 0;
+	monsters_num = document.getElementById('monstersAmountChosen').value;
 	pac_color = "yellow";
 	let walls = ["23", "24", "25", "28", "29","35", "41", "42", "43", "49", "410",
 		"411", "62", "65", "66", "67", "610", "72", "77", "710", "82", "85",
 		"87", "810", "92",  "95", "910", "102", "105", "106", "107","1010", "121",
 		"122", "123", "129", "1210", "1211", "135","143","144", "145", "148", "149"];
-	let food_remain = 60;
+	let food_remain = document.getElementById("ballsAmountChosen").value;
 	let food5_remain = 0.6 * food_remain;
 	let food15_remain = 0.3 * food_remain;
 	let food25_remain = 0.1 * food_remain;
@@ -166,24 +166,24 @@ function Draw() {
 	lblScore.value = score;
 	lblLives.value = lives;
 
-	let my_gradient = context.createLinearGradient(0, 0, 600, 0);
+	// let my_gradient = context.createLinearGradient(0, 0, 600, 0);
 
 	for (let i = 0; i < boardSize; i++) {
 		for (let j = 0; j < boardSize-4; j++) {
-			let center = new Object();
+			let center = {};
 			center.x = i * 40 + 25;
 			center.y = j * 40 + 25;
 			if (board[i][j] === pacman) {
 				DrawPacman(center.x, center.y, pac_side);
 
 			} else if (board[i][j] === point5) {
-				DrawPoint(center.x, center.y, 5, "yellow")
+				DrawPoint(center.x, center.y, 5, document.getElementById("colorPick5").value)
 
 			} else if (board[i][j] === point15) {
-				DrawPoint(center.x, center.y, 7, "purple")
+				DrawPoint(center.x, center.y, 7, document.getElementById("colorPick15").value)
 
 			} else if (board[i][j] === point25) {
-				DrawPoint(center.x, center.y, 9, "pink")
+				DrawPoint(center.x, center.y, 9, document.getElementById("colorPick25").value)
 
 			} else if (board[i][j] === wall) {
 				// context.fillStyle = "blue";
@@ -192,7 +192,7 @@ function Draw() {
 				// my_gradient.addColorStop(1, "grey");
 				// context.fillStyle = my_gradient;
 				let wall_img = new Image();
-				wall_img.src = "images/wall.jpg";
+				wall_img.src = "images/wall2.jpg";
 				context.drawImage(wall_img,center.x - 20, center.y - 20, 40, 40);
 				// context.fillRect(center.x - 20, center.y - 20, 40, 40);
 			}
@@ -200,7 +200,6 @@ function Draw() {
 				let cookie_img = new Image();
 				cookie_img.src = "images/cookie.gif";
 				context.drawImage(cookie_img, center.x-20, center.y-20, 40, 40);
-				// DrawPoint(center.x, center.y, 15, "yellow", "")
 
 
 			}
@@ -431,15 +430,7 @@ function MonsterSmartMove(m_pos){
 	}
 	m_pos.i = res[0];
 	m_pos.j = res[1];
-	//
-	// if (m_pos.i < pacman_pos.i && !isWall(m_pos.i+1,m_pos.j)) // monster is left of pacman
-	//     m_pos.i++;
-	// else if (m_pos.j < pacman_pos.j && !isWall(m_pos.i,m_pos.j+1))
-	//     m_pos.j++;
-	// else if (m_pos.i > pacman_pos.i && !isWall(m_pos.i-1,m_pos.j))
-	//     m_pos.i--;
-	// else if (m_pos.j > pacman_pos.i && !isWall(m_pos.i+1,m_pos.j-1))
-	//     m_pos.j--;
+
 }
 
 function MoveMonster(){
