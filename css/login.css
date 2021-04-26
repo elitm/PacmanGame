@@ -38,11 +38,11 @@
     border-color: #2ecc71;
   }
   
-  .tabcontent input[type = "submit"]{
+  .tabcontent input[type = "submit"], .tabcontent input[type = "button"]{
     border:0;
     background: none;
     display: block;
-    margin: 20px auto;
+    margin: 40px auto;
     text-align: center;
     border: 2px solid #2ecc71;
     padding: 14px 40px;
@@ -84,7 +84,7 @@ label{
     text-align: center;
   }
 
-#settingsForm{
+#pickNum{
   width: 500px;
   height: 420px;
   position:fixed;
@@ -95,4 +95,33 @@ label{
   border: black;
   border-radius: 20%;
   text-align: center;
+}
+
+#settingsForm{
+  width: 950px;
+  height: 350px;
+  position:fixed;
+  top: 40%;
+  left: 53%;
+  transform: translate(-50%,-50%);
+  background: #191919;
+  border: black;
+  border-radius: 10%;
+  text-align: center;
+}
+
+#settingsForm sub{
+  left:40%
+}
+
+#settingsForm rand{
+  right: 40%;
+}
+
+#submitSettings, #randomize{
+  display: inline-block;
+}
+
+#reg, #log{
+  display: inline-block;
 }
