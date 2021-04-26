@@ -5,6 +5,7 @@
 		<script type="text/javascript" src="js/app.js"></script>
 		<script src="js/valid.js"></script>
 		<script src="js/menu.js"></script>
+		<script src="js/settings.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 		<link rel="stylesheet" href="css/menu.css">
 		<link rel="stylesheet" href="css/login.css">
@@ -16,14 +17,16 @@
 <style>
 	body {
 		background: url(images/background.jpg) no-repeat center center fixed;
-
 		background-size: 100% 100%
 	}
 </style>
 	<!------------------- menu ------------------->
 	<nav class="menuBar">
-		<div id="logo" style="float:left ">
-			<img src="images/cookie_logo.png" height="48" width="100">
+		<div id="logo">
+			<img src="images/cookie_logo.png" height="85" width="100">
+		</div>
+		<div id="welcomeUser">
+			welcome, guest!
 		</div>
 		<a id="homeMenu" onclick="displayPage('#home')">Home</a>
 		<a id="loginMenu" onclick="displayPage('#login')">Login</a>
@@ -126,10 +129,10 @@
 
 		<table>
 			<tr>
-				<td><label for="upArrowForm">Up Arrow</label></td>
-				<td><label for="leftArrowForm">Left Arrow</label></td>
-				<td><label for="downArrowForm">Down Arrow</label></td>
-				<td><label for="rightArrowForm">Right Arrow</label></td>
+				<td><label id="upArrowForm">Up Arrow</label></td>
+				<td><label id="leftArrowForm">Left Arrow</label></td>
+				<td><label id="downArrowForm">Down Arrow</label></td>
+				<td><label id="rightArrowForm">Right Arrow</label></td>
 			</tr>
 			<tr>
 				<td><input type="text" class="form-control" id="keyup" class="inputkey"></td>
@@ -148,9 +151,9 @@
 				<td><input type="text" id="timePicked" min="60" size="4" value="50"></td>
 			</tr>
 			<tr>
-				<td><label id = "colorPicks" ><b>5 Points </b></label></td>
-				<td><label id = "colorPicks"><b>15 Points</b></label></td>
-				<td><label id = "colorPicks" ><b>25 Points </b></label></td>
+				<td><label  ><b>5 Points </b></label></td>
+				<td><label ><b>15 Points</b></label></td>
+				<td><label ><b>25 Points </b></label></td>
 				<td><label id="switch"><b>Extrme Game?</b></label></td>
 			</tr>
 			<tr>

@@ -120,10 +120,8 @@ label{
 
 #submitSettings, #randomize{
   display: inline-block;
-  float: left;
 }
 
 #reg, #log{
   display: inline-block;
-  float: left;
 }

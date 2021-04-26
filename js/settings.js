@@ -4,8 +4,8 @@ function ChooseRandom() {
     document.getElementById("colorPick15").value = GetRandomColor();
     document.getElementById("colorPick25").value = GetRandomColor();
 
-    document.getElementById("ballsAmountChosen").value = GetRandomNumber(50,90);
-    document.getElementById("monstersAmountChosen").value = GetRandomNumber(1,4);
+    document.getElementById("ballsAmountChosen").value = GetRandomNumber(50, 90);
+    document.getElementById("monstersAmountChosen").value = GetRandomNumber(1, 4);
     document.getElementById("timeChosen").value = GetRandomNumber(60, 600);
 
 }
@@ -24,4 +24,10 @@ function GetRandomColor() {
 
 function GetRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function startGame() {
+
+    displayPage("#game");
+    Start();
 }
