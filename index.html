@@ -21,8 +21,8 @@
 </style>
 	<!------------------- menu ------------------->
 	<nav class="menuBar">
-		<div id="logo" style="float:left">
-			<img src="images/cookie_logo.png" height="80" width="100">
+		<div id="logo" style="float:left ">
+			<img src="images/cookie_logo.png" height="48" width="100">
 		</div>
 		<a id="homeMenu" onclick="displayPage('#home')">Home</a>
 		<a id="loginMenu" onclick="displayPage('#login')">Login</a>
@@ -132,40 +132,43 @@
 
 		<table>
 			<tr>
-				<td></td>
-				<td><input type="button" id="keyup" class="inputkey"></td>
-				<td></td>
+				<td><label for="upArrowForm">Up Arrow</label></td>
+				<td><label for="leftArrowForm">Left Arrow</label></td>
+				<td><label for="downArrowForm">Down Arrow</label></td>
+				<td><label for="rightArrowForm">Right Arrow</label></td>
 			</tr>
 			<tr>
-				<td><input type="button" id="keyleft" class="inputkey"></td>
-				<td><input type="button" id="keydown" class="inputkey"></td>
-				<td><input type="button" id="keyright" class="inputkey"></td>
+				<td><input type="text" class="form-control" id="keyup" class="inputkey"></td>
+				<td><input type="text" class="form-control"  id="keyleft" class="inputkey"></td>
+				<td><input type="text" class="form-control"  id="keydown" class="inputkey"></td>
+				<td><input type="text" class="form-control"  id="keyright" class="inputkey"></td>
 			</tr>
-
+			<tr>
+				<td><label id = "ballsAmount" ><b>Enter number of balls (50-90) </b></label></td>
+				<td><label id = "monstersAmount" ><b>Enter number of Monsters (1-4) </b></label></td>
+				<td><label id = "timePick" ><b>Enter time for game (in seconds) </b></label></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ballsAmountChosen" min="50" max="90" size="4" value="50"></td>
+				<td><input type="text" id="monstersAmountChosen" min="1" max="4" size="4" value="4"></td>
+				<td><input type="text" id="timePicked" min="60" size="4" value="50"></td>
+			</tr>
+			<tr>
+				<td><label id = "colorPicks" ><b>5 Points </b></label></td>
+				<td><label id = "colorPicks"><b>15 Points</b></label></td>
+				<td><label id = "colorPicks" ><b>25 Points </b></label></td>
+				<td><label id="switch"><b>Extrme Game?</b></label></td>
+			</tr>
+			<tr>
+				<td><input type="color" id="colorPick5" value="#FFFF00"></td>
+				<td><input type="color" id="colorPick15" value="#FFA07A"></td>
+				<td><input type="color" id="colorPick25" value="#da70d6"></td>
+				<td><input type="checkbox"><span>class="slider"</span></label></td>
+			</tr>
 		</table>
 
-		<label id = "ballsAmount" ><b>Enter number of balls (50-90) </b></label>
-		<input type="text" id="ballsAmountChosen" min="50" max="90" size="4" value="50">
-		<br/>
-		<br/>
-		<label id = "monstersAmount" ><b>Enter number of Monsters (1-4) </b></label>
-		<input type="text" id="monstersAmountChosen" min="1" max="4" size="4" value="4">
-		<br/>
-		<br/>
-		<label id = "timePick" ><b>Enter time for game (in seconds) </b></label>
-		<input type="text" id="timePicked" min="60" size="4" value="50">
-		<br/>
-		<br/>
-		<label id = "colorPicks" ><b>Choose colors for balls </b></label>
-		<input type="color" id="colorPick5" value="#FFFF00"> 5 points
-		<br/>
-		<input type="color" id="colorPick15" value="#FFA07A"> 15 points
-		<br/>
-		<input type="color" id="colorPick25" value="#da70d6"> 25 points
-		<br/>
-		<br/>
-
 		<input id="submitSettings" type="submit" value="Start Game!"/>
+		<input type="button" id="randomize" onclick="ChooseRandom()" value="Random">
 
 	</form>
 
