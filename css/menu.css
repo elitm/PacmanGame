@@ -15,13 +15,15 @@
      background: #4c8fa4;
  }
  nav {
-     margin-top: 40px;
+     margin-top: 0px;
      padding: 24px;
      text-align: center;
      font-family: Calibri;
      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
      background: #308ea4;
  }
+
+
     a{
      transition: 0.3s ease;
      background: #4c8fa4;

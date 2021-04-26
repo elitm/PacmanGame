@@ -1,0 +1,98 @@
+  #registerForm{
+    width: 400px;
+    height: 450px;
+    position:fixed;
+    top: 50%;
+    left: 43%;
+    transform: translate(-50%,-50%);
+    background: #191919;
+    border: black;
+    border-radius: 20%;
+    text-align: center;
+  }
+  
+  h1{
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  
+  .tabcontent input[type = "text"], .tabcontent input[type = "password"]{
+    border:0;
+    background: none;
+    display: block;
+    margin: 0px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    position: relative;
+  }
+  
+  .tabcontent input[type = "text"]:focus, .tabcontent input[type = "password"]:focus{
+    width: 280px;
+    border-color: #2ecc71;
+  }
+  
+  .tabcontent input[type = "submit"]{
+    border:0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #2ecc71;
+    padding: 14px 40px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+  }
+  
+  .tabcontent input[type = "submit"]:hover{
+    background: #2ecc71;
+  }
+ 
+label{
+    color: white;
+    margin: 20%; 
+    font-family: Calibri;   
+  } 
+
+.tabcontent h2{
+    font-family: Georgia, sans-serif;
+    font-size: 5em;
+    letter-spacing: -2px;
+    color: white;
+}
+
+ 
+#loginForm{
+    width: 400px;
+    height: 320px;
+    position:fixed;
+    top: 50%;
+    left: 43%;
+    transform: translate(-50%,-50%);
+    background: #191919;
+    border: black;
+    border-radius: 20%;
+    text-align: center;
+  }
+
+#settingsForm{
+  width: 500px;
+  height: 420px;
+  position:fixed;
+  top: 50%;
+  left: 43%;
+  transform: translate(-50%,-50%);
+  background: #191919;
+  border: black;
+  border-radius: 20%;
+  text-align: center;
+}

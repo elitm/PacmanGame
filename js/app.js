@@ -192,7 +192,7 @@ function Draw() {
 				// my_gradient.addColorStop(1, "grey");
 				// context.fillStyle = my_gradient;
 				let wall_img = new Image();
-				wall_img.src = "images/wall2.jpg";
+				wall_img.src = "images/wall.jpg";
 				context.drawImage(wall_img,center.x - 20, center.y - 20, 40, 40);
 				// context.fillRect(center.x - 20, center.y - 20, 40, 40);
 			}

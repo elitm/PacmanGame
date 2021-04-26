@@ -7,6 +7,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 		<link rel="stylesheet" href="css/menu.css">
 		<link rel="stylesheet" href="css/login.css">
+		<link rel="stylesheet" href="css/home.css">
 	</head>
 	<title> cookie monster pacman </title>
 	<link rel = "icon" href = "images/cookiemonster.png" type = "image/x-icon">
@@ -20,8 +21,8 @@
 </style>
 	<!------------------- menu ------------------->
 	<nav class="menuBar">
-		<div style="float: left">
-			<img src="images/cookielogo.png" height="60" width="80">
+		<div id="logo" style="float:left">
+			<img src="images/cookie_logo.png" height="80" width="100">
 		</div>
 		<a id="homeMenu" onclick="displayPage('#home')">Home</a>
 		<a id="loginMenu" onclick="displayPage('#login')">Login</a>
@@ -41,6 +42,10 @@
 	<!------------------- home ------------------->
 	<div class="tabcontent" id="home">
 		<img src="images/cookiem.gif" align="center" width="640" height="360">
+			<div class="btnHome">
+				<button class="buttonReg" id="reg" onclick="displayPage('#register')"><span> Register </span></button>
+				<button class="buttonLog" id="log" onclick="displayPage('#login')"><span> Login </span></button>
+			</div>
 	</div>
 
 
@@ -114,14 +119,15 @@
 			<br>
 			<br>
 
-
 		</form>
 	</div>
 
 <!------------------- settings ------------------->
 
 <div class="tabcontent" id="settings">
-	<h2>Settings</h2>
+	<div class="set">
+		<h2>Settings</h2>
+	</div>
 	<form id="settingsForm">
 
 		<table>
