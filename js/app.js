@@ -1,16 +1,16 @@
 let context;
 let boardSize = 17;
-let empty = 0;
-let point5 = 1;
-let pacman = 2;
-let point15 = 3;
-let point25 = 4;
-let wall = 5;
-let bonus = 6;
-let monster1 = 10;
-let monster2 = 11;
-let monster3 = 12;
-let monster4 = 13; // strongest monster!
+const empty = 0;
+const point5 = 1;
+const pacman = 2;
+const point15 = 3;
+const point25 = 4;
+const wall = 5;
+const bonus = 6;
+const monster1 = 10;
+const monster2 = 11;
+const monster3 = 12;
+const monster4 = 13; // strongest monster!
 
 let monsters_num;
 let monster_pos = [{},{},{},{}];
@@ -166,7 +166,10 @@ function Draw() {
 	lblScore.value = score;
 	lblLives.value = lives;
 
-	// let my_gradient = context.createLinearGradient(0, 0, 600, 0);
+	let wall_img = new Image();
+	wall_img.src = "images/wall2.jpg";
+	let cookie_img = new Image();
+	cookie_img.src = "images/cookie.gif";
 
 	for (let i = 0; i < boardSize; i++) {
 		for (let j = 0; j < boardSize-4; j++) {
@@ -186,19 +189,11 @@ function Draw() {
 				DrawPoint(center.x, center.y, 9, document.getElementById("colorPick25").value)
 
 			} else if (board[i][j] === wall) {
-				// context.fillStyle = "blue";
-				// my_gradient.addColorStop(0, "black");
-				// my_gradient.addColorStop(0.5, "blue");
-				// my_gradient.addColorStop(1, "grey");
-				// context.fillStyle = my_gradient;
-				let wall_img = new Image();
-				wall_img.src = "images/wall2.jpg";
-				context.drawImage(wall_img,center.x - 20, center.y - 20, 40, 40);
+				// context.fillStyle = "beige";
 				// context.fillRect(center.x - 20, center.y - 20, 40, 40);
+				context.drawImage(wall_img,center.x - 20, center.y - 20, 40, 40);
 			}
 			else if (board[i][j] === bonus){
-				let cookie_img = new Image();
-				cookie_img.src = "images/cookie.gif";
 				context.drawImage(cookie_img, center.x-20, center.y-20, 40, 40);
 
 
@@ -214,7 +209,7 @@ function Draw() {
 				DrawMonster(context, 18, "green", center.x, center.y);
 			}
 			else if (board[i][j] === monster4){
-				DrawMonster(context, 22, "black", center.x, center.y);
+				DrawMonster(context, 22, "black", center.x, center.y, "red");
 			}
 		}
 	}
@@ -240,7 +235,7 @@ function DrawPoint(x, y, radius, color) {
 }
 
 
-function DrawMonster(ctx, radius, color, x, y) {
+function DrawMonster(ctx, radius, color, x, y, eyecolor="white") {
 	/***
 	 * code taken from http://www.java2s.com/example/javascript-book/pacman-and-ghost.html
 	 *
@@ -269,7 +264,7 @@ function DrawMonster(ctx, radius, color, x, y) {
 	ctx.stroke();
 
 	//eyes
-	ctx.fillStyle = "white";
+	ctx.fillStyle = eyecolor;
 	ctx.beginPath();
 	ctx.arc(x-head_radius / 2.5, y-head_radius / 2, head_radius / 3, 0, 2 * Math.PI);
 	ctx.fill();
@@ -330,9 +325,7 @@ function UpdatePosition() {
 			score -= 10;
 		lives --;
 		if (lives === 0){
-			window.clearInterval(interval);
-			window.clearInterval(interval_monsters);
-			window.clearInterval(interval_bonus);
+			StopGame();
 			window.alert("Loser!");
 		}
 		else {
@@ -360,15 +353,22 @@ function UpdatePosition() {
 	DrawTime();
 
 	if (!first_start && !board.find(PointsLeft)) { // if there are no more points on board - player wins!
-		window.clearInterval(interval);
-		window.clearInterval(interval_monsters);
-		window.clearInterval(interval_bonus);
+		StopGame();
 		window.alert("Game completed");
 	}
 	if (x !== undefined || first_start) {
 		Draw();
 		first_start = false;
 	}
+
+}
+
+function StopGame() {
+	window.clearInterval(interval);
+	window.clearInterval(interval_monsters);
+	window.clearInterval(interval_bonus);
+	lblScore.value = 0;
+	lblLives.value = lives;
 }
 
 
@@ -450,7 +450,13 @@ function MoveBonus(){
 	bonus_pos.i = neighbors[rand][0];
 	bonus_pos.j = neighbors[rand][1];
 	before_bonus = board[bonus_pos.i][bonus_pos.j];
-	board[bonus_pos.i][bonus_pos.j] = bonus;
+	if (bonus_pos.i === pacman_pos.i && bonus_pos.j === pacman_pos.j){ // if bonus goes to pacman - it is pacman's lucky day!
+		score += 50;
+		window.clearInterval(interval_bonus);
+	}
+	else
+		board[bonus_pos.i][bonus_pos.j] = bonus;
+
 	Draw();
 
 }
