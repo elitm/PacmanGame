@@ -189,6 +189,8 @@ function Draw() {
 				DrawPoint(center.x, center.y, 9, document.getElementById("colorPick25").value)
 
 			} else if (board[i][j] === wall) {
+				// context.fillStyle = "beige";
+				// context.fillRect(center.x - 20, center.y - 20, 40, 40);
 				context.drawImage(wall_img,center.x - 20, center.y - 20, 40, 40);
 			}
 			else if (board[i][j] === bonus){
@@ -323,7 +325,7 @@ function UpdatePosition() {
 			score -= 10;
 		lives --;
 		if (lives === 0){
-			EndGame();
+			StopGame();
 			window.alert("Loser!");
 		}
 		else {
@@ -351,7 +353,7 @@ function UpdatePosition() {
 	DrawTime();
 
 	if (!first_start && !board.find(PointsLeft)) { // if there are no more points on board - player wins!
-		EndGame();
+		StopGame();
 		window.alert("Game completed");
 	}
 	if (x !== undefined || first_start) {
@@ -361,10 +363,12 @@ function UpdatePosition() {
 
 }
 
-function EndGame() {
+function StopGame() {
 	window.clearInterval(interval);
 	window.clearInterval(interval_monsters);
 	window.clearInterval(interval_bonus);
+	lblScore.value = 0;
+	lblLives.value = lives;
 }
 
 
