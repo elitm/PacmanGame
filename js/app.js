@@ -38,18 +38,25 @@ let lblScore;
 let keyBoard={right: 39,down: 40,left: 37, up: 38};
 let KeyBoardValues = {left: 'ArrowLeft', up: 'ArrowUp', right: 'ArrowRight', down: 'ArrowDown'};
 
+let level;
+let game_audio = new Audio('./audio/intro.mp3');
+let death_audio = new Audio('./audio/Death.mp3');
+let win_audio = new Audio('./audio/complete.mp3');
 
 $(document).ready(function() {
 	canvas = document.getElementById('canvas');
 	lblLives = document.getElementById('lblLives');
 	lblScore = document.getElementById('lblScore');
-	totalTime = document.getElementById('timePicked');
 	context = canvas.getContext("2d");
 	setKeys();
 	// Start();
 });
 
 function Start() {
+	totalTime = document.getElementById('timeChosen').value;
+	game_audio.loop = true;
+	score = 0;
+	lives = 5;
 
 	board = [];
 	monsters_num = document.getElementById('monstersAmountChosen').value;
@@ -90,8 +97,17 @@ function Start() {
 	}, false);
 
 	interval = setInterval(function(){UpdatePosition(); }, 100);
-	interval_monsters = setInterval(MoveMonster, 900);
-	interval_bonus = setInterval(MoveBonus, 900);
+
+	// speed of monsters changes according to level
+	level = $("input[type='radio'][name='level']:checked").val(); // get chosen level (from radio button)
+	let timeout;
+	if (level === 'hard')
+		timeout = 300;
+	else // easy
+		timeout = 900;
+	interval_monsters = setInterval(MoveMonster, timeout);
+	interval_bonus = setInterval(MoveBonus, timeout);
+	game_audio.play();
 
 }
 
@@ -170,7 +186,7 @@ function Draw() {
 	canvas.width = canvas.width; //clean board
 	lblScore.value = score;
 	lblLives.value = lives;
-
+	DrawTime();
 	let wall_img = new Image();
 	wall_img.src = "images/wall2.jpg";
 	let cookie_img = new Image();
@@ -200,8 +216,6 @@ function Draw() {
 			}
 			else if (board[i][j] === bonus){
 				context.drawImage(cookie_img, center.x-20, center.y-20, 40, 40);
-
-
 			}
 			// monsters
 			else if (board[i][j] === monster1){
@@ -296,7 +310,7 @@ function UpdatePosition() {
 	board[pacman_pos.i][pacman_pos.j] = empty;
 	let currentTime = new Date();
 	time_elapsed = Math.round(totalTime-(currentTime - start_time)/ 1000);
-	
+
 	let x = GetKeyPressed();
 	if (x !== undefined)
 		pac_side = x;
@@ -325,24 +339,9 @@ function UpdatePosition() {
 			pacman_pos.j--;
 		}
 	}
-	let monster_hit = HitMonster();
-	if (monster_hit >= 0){
-		if (monster_hit === 3) // strong monster was hit
-			score -= 20;
-		else
-			score -= 10;
-		lives --;
-		if (lives === 0 || time_elapsed<=0 ){
-			StopGame();
-			window.alert("Loser!");
-		}
-		else {
-			DrawTime();
-			ClearMonsters();
-			PlaceMonsters();
-			PlacePacman();
-		}
-	}
+
+	CheckIfHit();
+
 	let spot = board[pacman_pos.i][pacman_pos.j];
 	if (spot === point5) {
 		score += 5;
@@ -358,7 +357,8 @@ function UpdatePosition() {
 	board[pacman_pos.i][pacman_pos.j] = pacman;
 	if (!first_start && !board.find(PointsLeft)) { // if there are no more points on board - player wins!
 		StopGame();
-		window.alert("Game completed");
+		win_audio.play().then(r => window.alert("Game completed"));
+
 	}
 	if (x !== undefined || first_start) {
 		Draw();
@@ -367,12 +367,36 @@ function UpdatePosition() {
 
 }
 
+function CheckIfHit() {
+	let monster_hit = HitMonster();
+	if (monster_hit >= 0){
+		if (monster_hit === 3) // strong monster was hit
+			score -= 20;
+		else
+			score -= 10;
+		lives --;
+		if (lives === 0 || time_elapsed <= 0){
+			StopGame();
+			death_audio.play();
+			window.alert("Loser!");
+		}
+		else {
+			ClearMonsters();
+			PlaceMonsters();
+			PlacePacman();
+		}
+	}
+}
+
 function StopGame() {
 	window.clearInterval(interval);
 	window.clearInterval(interval_monsters);
 	window.clearInterval(interval_bonus);
-	lblScore.value = 0;
-	lblLives.value = lives;
+	// lblScore.value = 0;
+	// lblLives.value = lives;
+	game_audio.pause();
+	game_audio.currentTime = 0;
+
 }
 
 
@@ -391,7 +415,7 @@ function PointsLeft(lst) {
  */
 function HitMonster(){
 	for (let i = 0; i < monster_pos.length; i++) {
-		if (pacman_pos.i === monster_pos[i].i && pacman_pos.j === monster_pos[i].j)
+		if ((pacman_pos.i === monster_pos[i].i && pacman_pos.j === monster_pos[i].j) || (pacman_pos.i === before_monster[i].i || pacman_pos.j === before_monster[i].j))
 			return i;
 	}
 	return -1;
@@ -399,18 +423,29 @@ function HitMonster(){
 
 
 function GetPossibleNeighbors(i, j){
-	// possible neighbor is anything but wall or other monster (monsters are 10,11,12,13)
+	// possible neighbor is anything but wall or other monster (monsters are 10,11,12,13) or bonus
 	let neighbors = [];
-	if (board[i + 1][j] !== wall && board[i+1][j] < 10)
-		neighbors.push([i +1, j]);
+	// if (board[i+1][j] !== wall && board[i+1][j] < 10 && board[i+1][j] !== bonus)
+	// 	neighbors.push([i+1, j]);
+	//
+	// if (board[i-1][j] !== wall && board[i-1][j] < 10 && board[i-1][j] !== bonus)
+	// 	neighbors.push([i-1 , j]);
+	//
+	// if (board[i][j+ 1] !== wall && board[i][j+1] < 10 && board[i][j+1] !== bonus)
+	// 	neighbors.push([i , j+1]);
+	//
+	// if (board[i][j-1] !== wall&& board[i][j-1] < 10 && board[i][j-1] !== bonus)
+	// 	neighbors.push([i, j-1]);
+	if (board[i+1][j] < 5)
+		neighbors.push([i+1, j]);
 
-	if (board[i - 1][j] !== wall && board[i-1][j] < 10)
-		neighbors.push([i -1 , j]);
+	if (board[i-1][j] < 5)
+		neighbors.push([i-1 , j]);
 
-	if (board[i][j+ 1] !== wall && board[i][j+1] < 10)
-		neighbors.push([i , j + 1]);
+	if (board[i][j+ 1] < 5)
+		neighbors.push([i , j+1]);
 
-	if (board[i][j - 1] !== wall&& board[i][j-1] < 10)
+	if (board[i][j-1] < 5)
 		neighbors.push([i, j-1]);
 
 	return neighbors;
@@ -442,6 +477,10 @@ function MoveMonster(){
 		board[monster_pos[i].i][monster_pos[i].j] = before_monster[i]; // put back what was in spot before monster (e.g point)
 		MonsterSmartMove(monster_pos[i]);
 		before_monster[i] = board[monster_pos[i].i][monster_pos[i].j]; // update before_monster to next spot monster will go
+		if (before_monster[i] === pacman) {
+			before_monster[i] = empty;
+			CheckIfHit();
+		}
 		board[monster_pos[i].i][monster_pos[i].j] = i + 10; // i+10 is monster
 	}
 	Draw();

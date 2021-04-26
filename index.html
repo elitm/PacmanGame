@@ -135,32 +135,36 @@
 				<td><label id="rightArrowForm">Right Arrow</label></td>
 			</tr>
 			<tr>
-				<td><input type="text" class="form-control" id="keyup" class="inputkey"></td>
-				<td><input type="text" class="form-control"  id="keyleft" class="inputkey"></td>
-				<td><input type="text" class="form-control"  id="keydown" class="inputkey"></td>
-				<td><input type="text" class="form-control"  id="keyright" class="inputkey"></td>
+				<td><input type="text" id="keyup" class="inputkey" value="ArrowUp"></td>
+				<td><input type="text" id="keyleft" class="inputkey" value="ArrowLeft"></td>
+				<td><input type="text" id="keydown" class="inputkey" value="ArrowDown"></td>
+				<td><input type="text" id="keyright" class="inputkey"value="ArrowRight"></td>
 			</tr>
 			<tr>
-				<td><label id = "ballsAmount" ><b>Enter number of balls (50-90) </b></label></td>
-				<td><label id = "monstersAmount" ><b>Enter number of Monsters (1-4) </b></label></td>
-				<td><label id = "timePick" ><b>Enter time for game (in seconds) </b></label></td>
+				<td><label id = "ballsAmount" ><b>balls amount (50-90) </b></label></td>
+				<td><label id = "monstersAmount" ><b>monsters amount(1-4) </b></label></td>
+				<td><label id = "timePick" ><b>time (in seconds) </b></label></td>
+				<td><label>Level</label></td>
 			</tr>
 			<tr>
-				<td><input type="text" id="ballsAmountChosen" min="50" max="90" size="4" value="50"></td>
-				<td><input type="text" id="monstersAmountChosen" min="1" max="4" size="4" value="4"></td>
-				<td><input type="text" id="timePicked" min="60" size="4" value="50"></td>
+				<td><input type="number" id="ballsAmountChosen" min="50" max="90" size="4" value="50"></td>
+				<td><input type="number" id="monstersAmountChosen" min="1" max="4" size="4" value="4"></td>
+				<td><input type="number" id="timeChosen" min="60" max="600" size="4" value="60"></td>
 			</tr>
 			<tr>
 				<td><label  ><b>5 Points </b></label></td>
 				<td><label ><b>15 Points</b></label></td>
 				<td><label ><b>25 Points </b></label></td>
-				<td><label id="switch"><b>Extrme Game?</b></label></td>
+				<td><input type="radio" id="easy"  name="level" value="easy" checked="checked">
+					<label for="easy">Easy</label> <br>
+					<input type="radio" id="hard" name="level" value="hard">
+					<label for="hard">Hard</label><br>
+				</td>
 			</tr>
 			<tr>
 				<td><input type="color" id="colorPick5" value="#FFFF00"></td>
 				<td><input type="color" id="colorPick15" value="#FFA07A"></td>
 				<td><input type="color" id="colorPick25" value="#da70d6"></td>
-				<td><input type="checkbox"><span>class="slider"</span></label></td>
 			</tr>
 		</table>
 
@@ -182,16 +186,18 @@
 		</div>
 
 </div>
+
+<!------------------- footer ------------------->
+
 <footer style="text-align: center">
 	<p>Contact Us: </p>
     <a class="text-uppercase">Elit Manes</a>
 	<a href="https://www.linkedin.com/in/elit-manes-6291111ba/">
-		<img class="contact-logo" id="linkein-logo-elit" src="images/linkedin-elit.png" width="3%" height="3%"></a>
+		<img class="contact-logo" id="linkein-logo-elit" src="images/linkedin-elit.png" width="35px" height="35px"></a>
    
 	<a class="text-uppercase" style="margin-left: 20px">Chana Dalfen </a>
 			<a href="https://www.linkedin.com/">
-				<img class="contact-logo" id="linkein-logo-chana" src="images/linkedin-chana.png" width="3%" height="3%"></a>
-	<small style="margin-left: 600px">Copyright © Web environments development course 2021</small>
+				<img class="contact-logo" id="linkein-logo-chana" src="images/linkedin-chana.png" width="35px" height="35px"></a>
 
 
 </footer>
