@@ -133,9 +133,5 @@ function loginUser() {
 		displayPage("#settings")
 	}
 
-}
-function startGame() {
-	displayPage("#game");
-	Start();
 
 }

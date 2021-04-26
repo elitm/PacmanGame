@@ -4,6 +4,7 @@
 		<script src="js/jquery-3.4.1.slim.min.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
 		<script src="js/valid.js"></script>
+		<script src="js/settings.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 		<link rel="stylesheet" href="css/menu.css">
 		<link rel="stylesheet" href="css/login.css">
@@ -28,16 +29,9 @@
 		<a id="loginMenu" onclick="displayPage('#login')">Login</a>
 		<a id="registerMenu" onclick="displayPage('#register')">Register</a>
 		<a id="settingsMenu" onclick="displayPage('#settings')">Settings</a>
-		<a id="aboutMenu">About</a>
+		<a id="aboutMenu" onClick="displayPage('#about'); openModal()">About </a>
 
 	</nav>
-
-	<script>
-		function displayPage(pageId) {
-			$(".tabcontent").hide();
-			$(pageId).show();
-		}
-	</script>
 
 	<!------------------- home ------------------->
 	<div class="tabcontent" id="home">
@@ -171,6 +165,20 @@
 
 
 </div>
+
+
+<!------------------- about ------------------->
+<div class="tabcontent" id="about">
+	<div class="tabcontent" id="myModal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p> some text in the modal.... r</p>
+		</div>
+
+	</div>
+</div>
+
+
 
 
 	</body>
