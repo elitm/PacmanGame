@@ -25,7 +25,7 @@
     text-align: center;
     border: 2px solid #3498db;
     padding: 14px 10px;
-    width: 200px;
+    width: 120px;
     outline: none;
     color: white;
     border-radius: 24px;
@@ -97,18 +97,18 @@ label{
   text-align: center;
 }
 
-#settingsForm{
-  width: 950px;
-  height: 350px;
-  position:fixed;
-  top: 40%;
-  left: 53%;
-  transform: translate(-50%,-50%);
-  background: #191919;
-  border: black;
-  border-radius: 10%;
-  text-align: center;
-}
+  #settingsForm{
+      width: 55%;
+      height: 50%;
+      position:fixed;
+      top: 50%;
+      left: 55%;
+      transform: translate(-50%,-50%);
+      background: #191919;
+      border: black;
+      border-radius: 10%;
+      text-align: center;
+  }
 
 #settingsForm sub{
   left:40%

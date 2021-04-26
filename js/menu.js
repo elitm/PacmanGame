@@ -5,11 +5,6 @@ function displayPage(pageId) {
 
 }
 
-function startGame() {
-    displayPage("#game");
-    Start();
-    }
-
 function openModal() {
     $(".tabcontent").hide();
     let modal = document.getElementById("myModal");
@@ -33,4 +28,26 @@ function openModal() {
             modal.style.display = 'none';
         }
 });
+}
+
+function addUser(){
+    let user = document.getElementById("registerUsername").value;
+    let pass = document.getElementById("registerPassword").value;
+    if (user != null && pass != null)
+        localStorage.setItem(user, pass);
+    displayPage("#home");
+}
+
+function loginUser() {
+    let user = document.getElementById("logUserName").value;
+    let pass = document.getElementById("logPass").value;
+    if (user in localStorage && localStorage.getItem(user) === pass) {
+        displayPage("#settings")
+
+    }
+    WelcomeUser(user);
+
+}
+function WelcomeUser(name){
+    document.getElementById('welcomeUser').innerText = "welcome back, " + name + "!";
 }

@@ -1,3 +1,5 @@
+let userOnline = false;
+
 $(document).ready(function () {
     localStorage.setItem("k","k");
 
@@ -74,18 +76,22 @@ $(document).ready(function () {
 			}
 		},
 		submitHandler: function () {
+			userOnline = true;
 			loginUser();
 		}
 	});
 
+	// make sure user is logged in when "start game" button is clicked
 	$("#settingsForm").validate({
 		submitHandler: function () {
-			startGame();
+			if (userOnline === true)
+				startGame();
+			else
+				alert("you must log in before playing");
 		}
 	});
 
 });
-
 
 
 /**
@@ -118,20 +124,3 @@ $(function () {
 
 });
 
-function addUser(){
-	let user = document.getElementById("registerUsername").value;
-	let pass = document.getElementById("registerPassword").value;
-	if (user != null && pass != null)
-		localStorage.setItem(user, pass);
-	displayPage("#home");
-}
-
-function loginUser() {
-	let user = document.getElementById("logUserName").value;
-	let pass = document.getElementById("logPass").value;
-	if (user in localStorage && localStorage.getItem(user) === pass) {
-		displayPage("#settings")
-	}
-
-
-}
