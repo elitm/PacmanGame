@@ -27,6 +27,7 @@ let score = 0;
 let lives = 5;
 let start_time;
 let time_elapsed;
+let totalTime;
 let first_start = true;
 let interval;
 let interval_monsters;
@@ -34,13 +35,17 @@ let interval_bonus;
 let canvas;
 let lblLives;
 let lblScore;
+let keyBoard={right: 39,down: 40,left: 37, up: 38};
+let KeyBoardValues = {left: 'ArrowLeft', up: 'ArrowUp', right: 'ArrowRight', down: 'ArrowDown'};
 
 
 $(document).ready(function() {
 	canvas = document.getElementById('canvas');
 	lblLives = document.getElementById('lblLives');
 	lblScore = document.getElementById('lblScore');
+	totalTime = document.getElementById('timePicked');
 	context = canvas.getContext("2d");
+	setKeys();
 	// Start();
 });
 
@@ -147,16 +152,16 @@ function GetRandomPosition() {
  * @return {number}
  */
 function GetKeyPressed() {
-	if (keysDown[39]) {
+	if (keysDown[keyBoard.right]) {
 		return 1;
 	}
-	if (keysDown[40]) {
+	if (keysDown[keyBoard.down]) {
 		return 2;
 	}
-	if (keysDown[37]) {
+	if (keysDown[keyBoard.left]) {
 		return 3;
 	}
-	if (keysDown[38]) {
+	if (keysDown[keyBoard.up]) {
 		return 4;
 	}
 }
@@ -289,6 +294,9 @@ function DrawTime() {
 
 function UpdatePosition() {
 	board[pacman_pos.i][pacman_pos.j] = empty;
+	let currentTime = new Date();
+	time_elapsed = Math.round(totalTime-(currentTime - start_time)/ 1000);
+	
 	let x = GetKeyPressed();
 	if (x !== undefined)
 		pac_side = x;
@@ -324,11 +332,12 @@ function UpdatePosition() {
 		else
 			score -= 10;
 		lives --;
-		if (lives === 0){
+		if (lives === 0 || time_elapsed<=0 ){
 			StopGame();
 			window.alert("Loser!");
 		}
 		else {
+			DrawTime();
 			ClearMonsters();
 			PlaceMonsters();
 			PlacePacman();
@@ -347,11 +356,6 @@ function UpdatePosition() {
 	}
 
 	board[pacman_pos.i][pacman_pos.j] = pacman;
-
-	let currentTime = new Date();
-	time_elapsed = (currentTime - start_time) / 1000;
-	DrawTime();
-
 	if (!first_start && !board.find(PointsLeft)) { // if there are no more points on board - player wins!
 		StopGame();
 		window.alert("Game completed");
@@ -459,4 +463,34 @@ function MoveBonus(){
 
 	Draw();
 
+}
+
+
+function setKeys() {
+    document.getElementById("keyleft").addEventListener('keydown', function (event) {
+        keyBoard.left = event.which;
+        this.value = event.key;
+        KeyBoardValues.left = event.key;
+    });
+
+    document.getElementById("keyright").addEventListener('keydown', function (event) {
+        keyBoard.rigth = event.which;
+        this.value = event.key;
+        KeyBoardValues.right = event.key;
+
+    });
+
+    document.getElementById("keydown").addEventListener('keydown', function (event) {
+        keyBoard.down = event.which;
+        this.value = event.key;
+        KeyBoardValues.down = event.key;
+
+    });
+
+    document.getElementById("keyup").addEventListener('keydown', function (event) {
+        keyBoard.up = event.which;
+        this.value = event.key;
+        KeyBoardValues.up = event.key;
+
+    });
 }

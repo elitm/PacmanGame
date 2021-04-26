@@ -24,7 +24,7 @@
  }
 
 
-    a{
+nav a{
      transition: 0.3s ease;
      background: #4c8fa4;
      color: #ffffff;
@@ -35,7 +35,7 @@
      padding: 20px 0;
      margin: 0 20px;
  }
- a:hover {
+ nav a:hover {
      border-top: 4px solid #ffffff;
      border-bottom: 4px solid #ffffff;
      padding: 6px 0;
@@ -93,3 +93,30 @@
      float: left;
      padding-left: 40px;
  }
+
+ footer {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background-color: #2c3e50;
+    color: #fff;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.text-uppercase{
+    background-color: #2c3e50;
+}
+
+footer #linkein-logo-elit #linkein-logo-chana{
+    background-color: #2c3e50;
+    
+}
+p{
+    color: rgb(29, 145, 165);
+    display: inline;
+    font-family: Calibri;
+    font-weight: bold;
+    font-size: 40px;
+}

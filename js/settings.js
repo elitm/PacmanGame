@@ -8,6 +8,12 @@ function ChooseRandom() {
     document.getElementById("monstersAmountChosen").value = GetRandomNumber(1, 4);
     document.getElementById("timeChosen").value = GetRandomNumber(60, 600);
 
+    //defult value for keys
+    document.getElementById("keyright").value = 39;
+    document.getElementById("keydown").value = 40;
+    document.getElementById("keyleft").value = 37;
+    document.getElementById("keyup").value = 38;
+
 }
 
 /**
