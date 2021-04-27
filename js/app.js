@@ -39,7 +39,7 @@ let keyBoard={right: 39,down: 40,left: 37, up: 38};
 let KeyBoardValues = {right: 'ArrowRight', down: 'ArrowDown', left: 'ArrowLeft', up: 'ArrowUp'};
 
 let level;
-let game_audio = new Audio('./audio/intro.mp3');
+let game_audio = new Audio('./audio/Intro.mp3');
 let death_audio = new Audio('./audio/Death.mp3');
 let win_audio = new Audio('./audio/complete.mp3');
 
@@ -60,7 +60,7 @@ function Start() {
 	DisplaySettings();
 	board = [];
 	monsters_num = document.getElementById('monstersAmountChosen').value;
-	pac_color = "#02178e";
+	pac_color = "#3ca2c3";
 	let walls = ["23", "24", "25", "28", "29","35", "41", "42", "43", "49", "410",
 		"411", "62", "65", "66", "67", "610", "72", "77", "710", "82", "85",
 		"87", "810", "92",  "95", "910", "102", "105", "106", "107","1010", "121",
@@ -189,8 +189,8 @@ function Draw() {
 
 	DrawTime();
 
-	let wall_img = new Image();
-	wall_img.src = "images/wall.jpg";
+	// let wall_img = new Image();
+	// wall_img.src = "images/wall.jpg";
 	let cookie_img = new Image();
 	cookie_img.src = "images/cookie.gif";
 
@@ -214,7 +214,7 @@ function Draw() {
 			} else if (board[i][j] === wall) {
 				context.fillStyle = "beige";
 				context.fillRect(center.x - 20, center.y - 20, 40, 40);
-				context.drawImage(wall_img,center.x - 20, center.y - 20, 40, 40);
+				// context.drawImage(wall_img,center.x - 20, center.y - 20, 40, 40);
 			}
 			else if (board[i][j] === bonus){
 				context.drawImage(cookie_img, center.x-20, center.y-20, 40, 40);
