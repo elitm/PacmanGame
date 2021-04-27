@@ -12,7 +12,7 @@
 		<link rel="stylesheet" href="css/home.css">
 	</head>
 	<title> cookie monster pacman </title>
-	<link rel = "icon" href = "images/cookiemonster.png" type = "image/x-icon">
+	<link rel = "icon" href = "images/icon.png" type = "image/x-icon">
 	<body>
 <style>
 	body {
@@ -33,6 +33,7 @@
 		<a id="registerMenu" onclick="displayPage('#register')">Register</a>
 		<a id="settingsMenu" onclick="displayPage('#settings')">Settings</a>
 		<a id="aboutMenu" onclick="openModal()">About </a>
+		<div id="names"> Chana & Elit </div>
 
 	</nav>
 
@@ -48,21 +49,21 @@
 
 	<!------------------- game ------------------->
 
-	<div class="tabcontent" id="game" align="center">
-		<div id="score" >
-			<label for="lblScore">SCORE:</label>
-			<input id="lblScore" type="text" />
-		</div>
-		<div id="time">
-			<label for="lblTime">TIME:</label>
-			<input id="lblTime" type="text" />
-		</div>
-		<div id="lives">
-			<label for="lblLives">LIVES:</label>
-			<input id="lblLives" type="text" />
-		</div>
-			<canvas id="canvas" height="600" width="900"></canvas>
-		</div>
+	<div class="tabcontent" id="game">
+		<table>
+			<tr>
+				<td><label for="lblScore">SCORE:</label></td>
+				<td><label for="lblTime">TIME:</label></td>
+				<td><label for="lblLives">LIVES:</label></td>
+			</tr>
+			<tr>
+				<td><input id="lblScore" type="text" /></td>
+				<td><input id="lblTime" type="text" /></td>
+				<td><input id="lblLives" type="text" /></td>
+<!--				<td><canvas id="livesCanvas" height="30" width="150"></canvas></td>-->
+			</tr>
+		</table>
+		<canvas id="canvas" height="600" width="900"></canvas>
 	</div>
 
 	<!------------------- register ------------------->
@@ -135,10 +136,10 @@
 				<td><label id="rightArrowForm">Right Arrow</label></td>
 			</tr>
 			<tr>
-				<td><input type="text" id="keyup" class="inputkey" value="ArrowUp"></td>
-				<td><input type="text" id="keyleft" class="inputkey" value="ArrowLeft"></td>
-				<td><input type="text" id="keydown" class="inputkey" value="ArrowDown"></td>
-				<td><input type="text" id="keyright" class="inputkey"value="ArrowRight"></td>
+				<td><input type="button" id="keyup" value="ArrowUp" ></td>
+				<td><input type="button" id="keyleft" value="ArrowLeft"></td>
+				<td><input type="button" id="keydown" value="ArrowDown"></td>
+				<td><input type="button" id="keyright" value="ArrowRight"></td>
 			</tr>
 			<tr>
 				<td><label id = "ballsAmount" ><b>balls amount (50-90) </b></label></td>

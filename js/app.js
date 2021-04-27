@@ -36,7 +36,7 @@ let canvas;
 let lblLives;
 let lblScore;
 let keyBoard={right: 39,down: 40,left: 37, up: 38};
-let KeyBoardValues = {left: 'ArrowLeft', up: 'ArrowUp', right: 'ArrowRight', down: 'ArrowDown'};
+let KeyBoardValues = {right: 'ArrowRight', down: 'ArrowDown', left: 'ArrowLeft', up: 'ArrowUp'};
 
 let level;
 let game_audio = new Audio('./audio/intro.mp3');
@@ -428,7 +428,7 @@ function HitMonster(){
 
 
 function GetPossibleNeighbors(i, j){
-	// possible neighbor is anything but wall or other monster (monsters are 10,11,12,13) or bonus
+	// possible neighbor is anything but wall (5) or other monster (10,11,12,13) or bonus (6)
 	let neighbors = [];
 	// if (board[i+1][j] !== wall && board[i+1][j] < 10 && board[i+1][j] !== bonus)
 	// 	neighbors.push([i+1, j]);
@@ -511,24 +511,25 @@ function MoveBonus(){
 
 
 function setKeys() {
-    document.getElementById("keyleft").addEventListener('keydown', function (event) {
+
+	document.getElementById("keyright").addEventListener('keydown', function (event) {
+		keyBoard.right = event.which;
+		this.value = event.key;
+		KeyBoardValues.right = event.key;
+
+	});
+
+	document.getElementById("keydown").addEventListener('keydown', function (event) {
+		keyBoard.down = event.which;
+		this.value = event.key;
+		KeyBoardValues.down = event.key;
+
+	});
+
+	document.getElementById("keyleft").addEventListener('keydown', function (event) {
         keyBoard.left = event.which;
         this.value = event.key;
         KeyBoardValues.left = event.key;
-    });
-
-    document.getElementById("keyright").addEventListener('keydown', function (event) {
-        keyBoard.rigth = event.which;
-        this.value = event.key;
-        KeyBoardValues.right = event.key;
-
-    });
-
-    document.getElementById("keydown").addEventListener('keydown', function (event) {
-        keyBoard.down = event.which;
-        this.value = event.key;
-        KeyBoardValues.down = event.key;
-
     });
 
     document.getElementById("keyup").addEventListener('keydown', function (event) {
