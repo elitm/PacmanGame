@@ -60,7 +60,7 @@ function Start() {
 	DisplaySettings();
 	board = [];
 	monsters_num = document.getElementById('monstersAmountChosen').value;
-	pac_color = "yellow";
+	pac_color = "#02178e";
 	let walls = ["23", "24", "25", "28", "29","35", "41", "42", "43", "49", "410",
 		"411", "62", "65", "66", "67", "610", "72", "77", "710", "82", "85",
 		"87", "810", "92",  "95", "910", "102", "105", "106", "107","1010", "121",
@@ -186,8 +186,8 @@ function Draw() {
 	canvas.width = canvas.width; //clean board
 	lblScore.value = score;
 	lblLives.value = lives;
-	let live_img = new Image();
-	live_img = "images/cookie.gif"
+
+	DrawTime();
 
 	let wall_img = new Image();
 	wall_img.src = "images/wall.jpg";
@@ -212,8 +212,8 @@ function Draw() {
 				DrawPoint(center.x, center.y, 9, document.getElementById("colorPick25").value)
 
 			} else if (board[i][j] === wall) {
-				// context.fillStyle = "beige";
-				// context.fillRect(center.x - 20, center.y - 20, 40, 40);
+				context.fillStyle = "beige";
+				context.fillRect(center.x - 20, center.y - 20, 40, 40);
 				context.drawImage(wall_img,center.x - 20, center.y - 20, 40, 40);
 			}
 			else if (board[i][j] === bonus){

@@ -106,6 +106,7 @@
 
 .text-uppercase{
     background-color: #2c3e50;
+    font-family: Calibri, serif;
 }
 
 footer #linkein-logo-elit #linkein-logo-chana{
@@ -113,9 +114,9 @@ footer #linkein-logo-elit #linkein-logo-chana{
     
 }
 p{
-    color: rgb(29, 145, 165);
+    /*color: rgb(29, 145, 165);*/
     display: inline;
-    font-family: Calibri;
+    font-family: Calibri, serif;
     font-weight: bold;
-    font-size: 40px;
+    font-size:25px;
 }

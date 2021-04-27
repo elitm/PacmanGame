@@ -43,11 +43,6 @@ function startGame() {
     Start();
 }
 
-function NewGame(){
-    StopGame();
-    startGame();
-}
-
 function SaveSettings(){
 	keyleft =  document.getElementById("keyleft").value;
 	keyright = document.getElementById("keyright").value;
@@ -56,7 +51,7 @@ function SaveSettings(){
 
 	ballsAmount = document.getElementById("ballsAmountChosen").value;
     monstersAmount = document.getElementById("monstersAmountChosen").value;
-    time = document.getElementById("timeChosen").value;
+    timePick = document.getElementById("timeChosen").value;
 
 	color5pt = document.getElementById("colorPick5").value;
 	color15pt = document.getElementById("colorPick15").value;
@@ -64,16 +59,16 @@ function SaveSettings(){
 }
 
 function DisplaySettings(){
-	$("#keyUP").text(keyup);
-	$("#keyDown").text(keydown);
-	$("#keyLeft").text(keyleft);
-	$("#keyRight").text(keyright);
+	$("#keyUpDisplay").text(keyup);
+	$("#keyLeftDisplay").text(keydown);
+	$("#keyDownDisplay").text(keyleft);
+	$("#keyRightDisplay").text(keyright);
 
 	$("#balls").text(ballsAmount);
 	$("#monsters").text(monstersAmount);
-	$("#gameTotal").text(time);
+	$("#gameTotal").text(timePick);
 
 	$("#color5").val(color5pt);
 	$("#color15").val(color15pt);
 	$("#color25").val(color25pt);
-};
+}

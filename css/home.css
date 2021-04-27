@@ -8,7 +8,7 @@
   
   button{
     display: block;
-    width: 180px;
+    width: 160px;
     height: 140px;
     line-height: 40px;
     font-size: 18px;
@@ -19,9 +19,11 @@
     letter-spacing: 2px;
     text-align: center;
     position: relative;
-    transition: all .35s;
+    /*transition: all .35s;*/
     border-radius: 100%;
     color: rgb(0, 0, 0);
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
   }
   
   button span{
@@ -29,12 +31,13 @@
     z-index: 2;
     font-weight: bold;
   }
-  
+
   button:hover {
-    border: 1px solid;
-    box-shadow: inset 0 0 20px rgba(4, 30, 143, 0.5), 0 0 20px rgba(255, 255, 255, .2);
-    outline-color: rgba(255, 255, 255, 0);
-    outline-offset: 15px;
-    text-shadow: 2px 2px 2px #427388; 
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
   }
 
+ button:active {
+  transform: translateY(4px);
+}
