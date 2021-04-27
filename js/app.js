@@ -57,7 +57,7 @@ function Start() {
 	game_audio.loop = true;
 	score = 0;
 	lives = 5;
-
+	DisplaySettings();
 	board = [];
 	monsters_num = document.getElementById('monstersAmountChosen').value;
 	pac_color = "yellow";
@@ -186,9 +186,11 @@ function Draw() {
 	canvas.width = canvas.width; //clean board
 	lblScore.value = score;
 	lblLives.value = lives;
-	DrawTime();
+	let live_img = new Image();
+	live_img = "images/cookie.gif"
+
 	let wall_img = new Image();
-	wall_img.src = "images/wall2.jpg";
+	wall_img.src = "images/wall.jpg";
 	let cookie_img = new Image();
 	cookie_img.src = "images/cookie.gif";
 

@@ -74,8 +74,8 @@ label{
 
  
 #loginForm{
-    width: 400px;
-    height: 320px;
+    width: 20%;
+    height: 40%;
     position:fixed;
     top: 50%;
     left: 43%;
@@ -100,10 +100,10 @@ label{
 }
 
 #settingsForm{
-  width: 55%;
-  height: 50%;
+  width: 42%;
+  height: 54%;
   position:fixed;
-  top: 50%;
+  top: 45%;
   left: 55%;
   transform: translate(-50%,-50%);
   background: #191919;
