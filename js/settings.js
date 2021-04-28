@@ -17,7 +17,7 @@ function ChooseRandom() {
 
     document.getElementById("ballsAmountChosen").value = GetRandomNumber(50, 90);
     document.getElementById("monstersAmountChosen").value = GetRandomNumber(1, 4);
-    document.getElementById("time").value = GetRandomNumber(60, 600);
+    document.getElementById("timeChosen").value = GetRandomNumber(60, 600);
 
 }
 
