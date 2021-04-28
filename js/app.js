@@ -14,7 +14,7 @@ const monster4 = 13; // strongest monster!
 
 let monsters_num;
 let monster_pos = [{},{},{},{}];
-let before_monster = [];
+let before_monster;
 
 let pacman_pos = {};
 let pac_color;
@@ -53,6 +53,7 @@ $(document).ready(function() {
 });
 
 function Start() {
+	before_monster = new Array(monsters_num).fill(0);
 	totalTime = document.getElementById('timeChosen').value;
 	game_audio.loop = true;
 	score = 0;
