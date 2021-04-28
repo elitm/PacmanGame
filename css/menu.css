@@ -4,6 +4,7 @@
  /*   background-size: cover;*/
  /*}*/
 
+
  #home{
      display: block;
  }
@@ -119,4 +120,14 @@ p{
     font-family: Calibri, serif;
     font-weight: bold;
     font-size:25px;
+}
+#name{
+    float: left;
+    font-weight: bold;
+}
+
+#gif{
+    position:absolute;
+    bottom:5%;
+    left:0;
 }

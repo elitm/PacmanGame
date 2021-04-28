@@ -119,7 +119,7 @@ $(function () {
 	});
 
 	$.validator.addMethod("lettersonly", function(value, element) {
-		return this.optional(element) || /^[a-z\s]+$/i.test(value);
+		return this.optional(element) || /^[a-z\sA-Z]+$/i.test(value);
 	});
 
 });

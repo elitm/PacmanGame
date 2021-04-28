@@ -91,6 +91,18 @@ function Start() {
 	keysDown = {};
 	addEventListener("keydown", function (e) {
 		keysDown[e.keyCode] = true;
+		switch(e.keyCode) {
+			case 37:
+			case 39:
+			case 38:
+			case 40:
+			case 32:
+				e.preventDefault(); // prevent page scrolling with arrow keys
+				break;
+			default:
+				break; // do not block other keys
+		}
+
 	}, false);
 	addEventListener("keyup", function (e) {
 		keysDown[e.keyCode] = false;
@@ -316,7 +328,7 @@ function UpdatePosition() {
 	{
 		StopGame();
 		death_audio.play();
-		window.alert("Times up Loser!")
+		window.alert("Times up Loser! you scored " + score + " points");
 	}
 	let x = GetKeyPressed();
 	if (x !== undefined)
@@ -364,7 +376,7 @@ function UpdatePosition() {
 	board[pacman_pos.i][pacman_pos.j] = pacman;
 	if (!first_start && !board.find(PointsLeft)) { // if there are no more points on board - player wins!
 		StopGame();
-		win_audio.play().then(r => window.alert("Game completed"));
+		win_audio.play().then(r => window.alert("Game completed! winner! you scored " + score + " points"));
 
 	}
 	if (x !== undefined || first_start) {
@@ -385,7 +397,7 @@ function CheckIfHit() {
 		if (lives === 0 ){
 			StopGame();
 			death_audio.play();
-			window.alert("No lives left Loser!");
+			window.alert("No lives left Loser! you scored " + score + " points");
 		}
 		else {
 			ClearMonsters();

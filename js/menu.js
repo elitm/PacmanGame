@@ -6,7 +6,7 @@ function displayPage(pageId) {
 }
 
 function openModal() {
-    $(".tabcontent").hide();
+    // $(".tabcontent").hide();
     let modal = document.getElementById("myModal");
     let span = document.getElementsByClassName("close")[0];
 
