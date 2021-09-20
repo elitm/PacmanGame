@@ -18,3 +18,8 @@ Extras:
 1. Monster 4 is the strongest! If he catches you, you will lose -20 points and -2 lives.
 2. Level difficulty - Easy/Hard - affects the speed of the monsters and makes the game easier or more challenging.
 
+
+![image](https://user-images.githubusercontent.com/49072912/133993808-66b6f022-293e-48f2-b39c-7cd5e40a92e7.png)
+
+
+
