@@ -1,6 +1,8 @@
-# COOKIE-MONSTER PACMAN GAME
+<h3>COOKIE-MONSTER PACMAN GAME</h3>
+
+-------
+
 by Chana Dalfen & Elit Manes
-320504632 205735293
 
 Link to game:
 https://web-development-environments-2021.github.io/assignment2_320504632_205735293/
